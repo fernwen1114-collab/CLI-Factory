@@ -1,29 +1,34 @@
 <div align="center">
   <h1>🏭 CLI-Factory</h1>
-  <strong>The missing standard for agent-reliable CLIs.</strong>
+  <strong>The standard + factory for agent-native CLIs.</strong>
+  <br/><br/>
+  English | <a href="README_zh.md">中文</a>
 </div>
 
 ---
 
 ## The Problem
 
-AI agents interact with the world through CLI commands. There are already great tools that produce CLIs — [bb-browser](https://github.com/anthropics/bb-browser) turns websites into commands, [CLI-Anything](https://github.com/HKUDS/CLI-Anything) generates harnesses for desktop apps, and more are emerging every week.
+AI agents interact with the world through CLI commands. There are already great tools that produce CLIs — turning websites into commands, generating harnesses for desktop apps, wrapping internal tools. More are emerging every week.
 
-They all produce CLIs. **None of them produce agent-*reliable* CLIs.**
+These tools solve the access layer. CLI-Factory solves the reliability layer — with a shared standard.
+
+Take a real example. bb-browser can call a video generation platform:
 
 ```bash
 bb-browser site xiaoyunque/generate-video "prompt" "ref" "thread" "model" "720p"
-# Returns a run_id. Then what?
-#
-# ❌ Is the job done?         → No lifecycle tracking
-# ❌ How much did it cost?    → No budget awareness
-# ❌ Where's the video?       → No artifact retrieval
-# ❌ Timed out, retry?        → No idempotency
-# ❌ Platform changed?        → No drift detection
-# ❌ Structured error?        → No error classification
 ```
 
-An agent calling this is flying blind.
+The access works. But for an agent, the hard questions start after the call returns:
+
+- ❌ Is the job done? — No lifecycle tracking
+- ❌ How much did it cost? — No budget awareness
+- ❌ Where's the output? — No artifact retrieval
+- ❌ Timed out, retry? — No idempotency
+- ❌ Platform changed? — No drift detection
+- ❌ Structured error? — No error classification
+
+This is the reliability gap. CLI-Factory fills it.
 
 ## Why Now
 
@@ -46,102 +51,36 @@ CLI-Factory exists to make those answers consistent.
 
 ## What is CLI-Factory
 
-**A Protocol** that defines what an agent-reliable CLI must provide — structured JSON output, job lifecycle, budget control, error taxonomy, idempotency, and drift detection.
+**A Spec** that defines what an agent-native CLI must provide — structured JSON output, job lifecycle, budget control, error taxonomy, idempotency, and drift detection.
 
 **A Toolkit** that helps developers build new CLIs — or upgrade existing ones — to conform to that protocol.
 
 ```
-  Your Config         Protocol Spec         Test Suite
-       │                   │                    │
-       ▼                   ▼                    ▼
-  ┌─────────────────────────────────────────────────┐
-  │                   CLI-Factory                   │
-  │      burns 🔥 tokens in Codex / Claude Code     │
-  │                                                 │
-  │   bb-browser · CLI-Anything · extensible        │
-  └──────────────────────┬──────────────────────────┘
-                         │
-                         ▼
-                Agent-Reliable CLI
+  Your Config              Spec              Test Suite
+       │                    │                     │
+       ▼                    ▼                     ▼
+  ┌──────────────────────────────────────────────────┐
+  │               CLI-Factory  🔥                    │
+  │          burns tokens to vibe-code your CLI      │
+  │                                                  │
+  │          any CLI-producing backend               │
+  └────────────────────────┬─────────────────────────┘
+                           │
+                           ▼
+                   Agent-Native CLI
 ```
-
-## Example JSON Contract
-
-Instead of making agents scrape terminal prose, a CLI-Factory command should return a predictable machine-readable shape.
-
-```json
-{
-  "ok": true,
-  "command": "video.generate",
-  "request_id": "req_abc123",
-  "status": "succeeded",
-  "lifecycle": {
-    "queued_at": "2026-04-14T10:00:00Z",
-    "started_at": "2026-04-14T10:00:03Z",
-    "finished_at": "2026-04-14T10:00:41Z"
-  },
-  "cost": {
-    "estimated": 30,
-    "actual": 28,
-    "currency": "credits"
-  },
-  "artifacts": [
-    {
-      "kind": "video",
-      "path": "./output/cat-piano.mp4"
-    }
-  ],
-  "error": null
-}
-```
-
-The exact schema will evolve, but the contract should always be explicit about outcome, lifecycle, cost, artifacts, and error state.
 
 ## Core Guarantees
 
 CLI-Factory is opinionated about what an agent should be able to depend on:
 
-- Structured output: every command returns machine-readable JSON, not prose that must be guessed at.
-- Lifecycle visibility: async work exposes clear states like queued, running, succeeded, failed, and timed out.
-- Budget awareness: estimation and execution can be guarded by explicit spend limits.
-- Idempotent execution: retries should not accidentally duplicate costly work.
-- Typed errors: agents can distinguish user error, platform failure, transient retryable issues, and drift.
-- Artifact retrieval: outputs are discoverable, downloadable, and explicitly reported.
-- Drift detection: when a target platform changes, the CLI can surface that clearly instead of silently degrading.
-
-## Non-Goals
-
-CLI-Factory is not:
-
-- a replacement for tools like bb-browser or CLI-Anything
-- an agent runtime, planner, or orchestration framework
-- a guarantee that the underlying platform will be stable
-
-Here's what a CLI-Factory-produced CLI looks like in practice:
-
-```bash
-# 1. Is the platform still working?
-cli-factory-xiaoyunque doctor
-# → {"ok": true, "status": "healthy", "checks": [...]}
-
-# 2. How much will it cost?
-cli-factory-xiaoyunque video estimate \
-  --model seedance_2.0_fast --duration-sec 5
-# → {"ok": true, "estimated_cost": 30, "remaining": 270, ...}
-
-# 3. Generate with budget guard and idempotency
-cli-factory-xiaoyunque video generate \
-  --prompt "A cat playing piano" \
-  --model seedance_2.0_fast \
-  --duration-sec 5 \
-  --output ./output/ \
-  --max-credits 50 \
-  --request-id "req_abc123"
-# → Estimate → submit → poll → detect artifact → download → report cost
-# → All in structured JSON. Every error typed. Every credit tracked.
-```
-
-Whether you have an existing CLI or are starting from scratch, CLI-Factory gives you the standard and the tools to make it agent-native.
+- **Structured output**: every command returns machine-readable JSON, not prose that must be guessed at.
+- **Lifecycle visibility**: async work exposes clear states — queued, running, succeeded, failed, timed out.
+- **Budget awareness**: estimation and execution can be guarded by explicit spend limits.
+- **Idempotent execution**: retries should not accidentally duplicate costly work.
+- **Typed errors**: agents can distinguish user error, platform failure, transient retryable issues, and drift.
+- **Artifact retrieval**: outputs are discoverable, downloadable, and explicitly reported.
+- **Drift detection**: when a target platform changes, the CLI surfaces that clearly instead of silently degrading.
 
 ## Roadmap
 
@@ -157,7 +96,7 @@ We're building CLI-Factory in layers:
 
 > **Early stage — defining the protocol.**
 >
-> We're writing the Agent Execution Protocol spec and building the first reference implementation. The vision is clear; the code is being written.
+> We're writing the spec and building the first reference implementation. The vision is clear; the code is being written.
 
 ## Join Us
 
