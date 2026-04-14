@@ -20,11 +20,20 @@
 
 **A Toolkit** that helps developers build new CLIs — or upgrade existing ones — to conform to that protocol.
 
-<div align="center">
-  <img src="assets/architecture.png" alt="CLI-Factory Architecture Flow" width="450">
-  <br/>
-  <em>Your Config + Protocol Spec + Test Suite ➔ <strong>CLI-Factory 🔥</strong> ➔ Agent-Native CLI</em>
-</div>
+```
+  Your Config              Spec              Test Suite
+       │                    │                     │
+       ▼                    ▼                     ▼
+  ┌──────────────────────────────────────────────────┐
+  │               CLI-Factory  🔥                    │
+  │          burns tokens to vibe-code your CLI      │
+  │                                                  │
+  │          any CLI-producing backend               │
+  └────────────────────────┬─────────────────────────┘
+                           │
+                           ▼
+                   Agent-Native CLI
+```
 
 ## 🚨 The Problem
 

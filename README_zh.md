@@ -20,11 +20,20 @@
 
 **一套工具**，帮助开发者构建新的 CLI——或升级现有的 CLI——使其符合这份规范。
 
-<div align="center">
-  <img src="assets/architecture.png" alt="CLI-Factory Architecture Flow" width="450">
-  <br/>
-  <em>你的配置 + 规范 (Spec) + 测试套件 ➔ <strong>CLI-Factory 🔥</strong> ➔ Agent-Native CLI</em>
-</div>
+```
+  你的配置                规范               测试套件
+       │                    │                     │
+       ▼                    ▼                     ▼
+  ┌──────────────────────────────────────────────────┐
+  │               CLI-Factory  🔥                    │
+  │          燃烧 token，vibe-code 你的 CLI           │
+  │                                                  │
+  │            任意 CLI 生成后端                       │
+  └────────────────────────┬─────────────────────────┘
+                           │
+                           ▼
+                   Agent-Native CLI
+```
 
 ## 🚨 问题
 
