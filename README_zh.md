@@ -2,12 +2,17 @@
   <h1>🏭 CLI-Factory</h1>
   <strong>Agent-native CLI 的规范与工厂。</strong>
   <br/><br/>
+  
+  [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+  [![Status: Early Stage](https://img.shields.io/badge/Status-Early_Stage-orange.svg)]()
+  
+  <br/>
   <a href="README.md">English</a> | 中文
 </div>
 
 ---
 
-## 问题
+## 🚨 问题
 
 AI agent 通过 CLI 命令与世界交互。现在已经有很多优秀的工具可以生成 CLI——把网站变成命令、为桌面应用生成 CLI 壳、包装内部工具。每周都有新的工具出现。
 
@@ -30,7 +35,7 @@ bb-browser site xiaoyunque/generate-video "prompt" "ref" "thread" "model" "720p"
 
 这就是可靠性缺口。CLI-Factory 填补它。
 
-## 为什么是现在
+## ⏳ 为什么是现在
 
 世界正在被生成的 CLI 快速填满。浏览器变成了命令，桌面应用变成了 CLI 壳，内部工具一夜之间被包装好。
 
@@ -49,7 +54,7 @@ bb-browser site xiaoyunque/generate-video "prompt" "ref" "thread" "model" "720p"
 
 CLI-Factory 就是为了让这些答案标准化。
 
-## CLI-Factory 是什么
+## 🏭 CLI-Factory 是什么
 
 **一份规范**，定义 agent-native CLI 必须提供什么——结构化 JSON 输出、任务生命周期、预算控制、错误分类、幂等性、漂移检测。
 
@@ -70,19 +75,19 @@ CLI-Factory 就是为了让这些答案标准化。
                    Agent-Native CLI
 ```
 
-## 核心保证
+## 🛡️ 核心保证
 
 CLI-Factory 对 agent 应该能依赖什么有明确的主张：
 
-- **结构化输出**：每个命令返回机器可读的 JSON，而不是需要猜测的文本。
-- **生命周期可见**：异步工作暴露清晰的状态——排队、运行中、成功、失败、超时。
-- **预算感知**：估算和执行可以被明确的花费上限保护。
-- **幂等执行**：重试不会意外地重复昂贵的操作。
-- **类型化错误**：agent 能区分用户错误、平台故障、可重试的瞬态问题和漂移。
-- **产物获取**：产出是可发现的、可下载的、被明确报告的。
-- **漂移检测**：当目标平台发生变化时，CLI 清晰地暴露而不是静默退化。
+- 🧩 **结构化输出**：每个命令返回机器可读的 JSON，而不是需要猜测的文本。
+- 🚦 **生命周期可见**：异步工作暴露清晰的状态——排队、运行中、成功、失败、超时。
+- 💰 **预算感知**：估算和执行可以被明确的花费上限保护。
+- 🔄 **幂等执行**：重试不会意外地重复昂贵的操作。
+- ⚠️ **类型化错误**：agent 能区分用户错误、平台故障、可重试的瞬态问题和漂移。
+- 📦 **产物获取**：产出是可发现的、可下载的、被明确报告的。
+- 📡 **漂移检测**：当目标平台发生变化时，CLI 清晰地暴露而不是静默退化。
 
-## 路线图
+## 🗺️ 路线图
 
 我们分层构建 CLI-Factory：
 
@@ -92,13 +97,13 @@ CLI-Factory 对 agent 应该能依赖什么有明确的主张：
 4. 增加验证：合规测试，让开发者证明自己的 CLI 是 agent-reliable 的。
 5. 扩大后端覆盖：支持更多 web、桌面和内部工具集成。
 
-## 当前状态
+## 🚧 当前状态
 
 > **早期阶段——正在定义规范。**
 >
 > 我们正在编写规范并构建第一个参考实现。愿景清晰，代码正在编写中。
 
-## 加入我们
+## 🤝 加入我们
 
 我们在寻找相信 CLI 应该成为 agent 生态一等公民的开发者。
 

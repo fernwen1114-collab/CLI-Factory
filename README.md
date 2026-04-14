@@ -2,12 +2,17 @@
   <h1>🏭 CLI-Factory</h1>
   <strong>The standard + factory for agent-native CLIs.</strong>
   <br/><br/>
+  
+  [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+  [![Status: Early Stage](https://img.shields.io/badge/Status-Early_Stage-orange.svg)]()
+  
+  <br/>
   English | <a href="README_zh.md">中文</a>
 </div>
 
 ---
 
-## The Problem
+## 🚨 The Problem
 
 AI agents interact with the world through CLI commands. There are already great tools that produce CLIs — turning websites into commands, generating harnesses for desktop apps, wrapping internal tools. More are emerging every week.
 
@@ -30,7 +35,7 @@ The access works. But for an agent, the hard questions start after the call retu
 
 This is the reliability gap. CLI-Factory fills it.
 
-## Why Now
+## ⏳ Why Now
 
 The world is rapidly filling with generated CLIs. Browsers become commands, desktop apps become harnesses, internal tools get wrapped overnight.
 
@@ -49,7 +54,7 @@ Without a shared standard, every agent integration has to rediscover the same an
 
 CLI-Factory exists to make those answers consistent.
 
-## What is CLI-Factory
+## 🏭 What is CLI-Factory
 
 **A Spec** that defines what an agent-native CLI must provide — structured JSON output, job lifecycle, budget control, error taxonomy, idempotency, and drift detection.
 
@@ -70,19 +75,19 @@ CLI-Factory exists to make those answers consistent.
                    Agent-Native CLI
 ```
 
-## Core Guarantees
+## 🛡️ Core Guarantees
 
 CLI-Factory is opinionated about what an agent should be able to depend on:
 
-- **Structured output**: every command returns machine-readable JSON, not prose that must be guessed at.
-- **Lifecycle visibility**: async work exposes clear states — queued, running, succeeded, failed, timed out.
-- **Budget awareness**: estimation and execution can be guarded by explicit spend limits.
-- **Idempotent execution**: retries should not accidentally duplicate costly work.
-- **Typed errors**: agents can distinguish user error, platform failure, transient retryable issues, and drift.
-- **Artifact retrieval**: outputs are discoverable, downloadable, and explicitly reported.
-- **Drift detection**: when a target platform changes, the CLI surfaces that clearly instead of silently degrading.
+- 🧩 **Structured output**: every command returns machine-readable JSON, not prose that must be guessed at.
+- 🚦 **Lifecycle visibility**: async work exposes clear states — queued, running, succeeded, failed, timed out.
+- 💰 **Budget awareness**: estimation and execution can be guarded by explicit spend limits.
+- 🔄 **Idempotent execution**: retries should not accidentally duplicate costly work.
+- ⚠️ **Typed errors**: agents can distinguish user error, platform failure, transient retryable issues, and drift.
+- 📦 **Artifact retrieval**: outputs are discoverable, downloadable, and explicitly reported.
+- 📡 **Drift detection**: when a target platform changes, the CLI surfaces that clearly instead of silently degrading.
 
-## Roadmap
+## 🗺️ Roadmap
 
 We're building CLI-Factory in layers:
 
@@ -92,13 +97,13 @@ We're building CLI-Factory in layers:
 4. Add verification: conformance tests so developers can prove their CLI is agent-reliable.
 5. Grow backend coverage: support more web, desktop, and internal-tool integrations over time.
 
-## Current Status
+## 🚧 Current Status
 
 > **Early stage — defining the protocol.**
 >
 > We're writing the spec and building the first reference implementation. The vision is clear; the code is being written.
 
-## Join Us
+## 🤝 Join Us
 
 We're looking for developers who believe CLIs should be first-class citizens in the agent ecosystem.
 
