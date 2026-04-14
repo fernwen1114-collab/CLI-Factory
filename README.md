@@ -1,4 +1,6 @@
 <div align="center">
+  <img src="assets/hero.png" alt="CLI-Factory Hero Banner" width="800">
+  <br/>
   <h1>🏭 CLI-Factory</h1>
   <strong>The standard + factory for agent-native CLIs.</strong>
   <br/><br/>

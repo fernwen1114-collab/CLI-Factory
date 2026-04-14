@@ -1,4 +1,6 @@
 <div align="center">
+  <img src="assets/hero.png" alt="CLI-Factory Hero Banner" width="800">
+  <br/>
   <h1>🏭 CLI-Factory</h1>
   <strong>Agent-native CLI 的规范与工厂。</strong>
   <br/><br/>
