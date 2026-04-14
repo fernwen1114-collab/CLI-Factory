@@ -14,6 +14,18 @@
 
 ---
 
+## 🏭 CLI-Factory 是什么
+
+**一份规范**，定义 agent-native CLI 必须提供什么——结构化 JSON 输出、任务生命周期、预算控制、错误分类、幂等性、漂移检测。
+
+**一套工具**，帮助开发者构建新的 CLI——或升级现有的 CLI——使其符合这份规范。
+
+<div align="center">
+  <img src="assets/architecture.png" alt="CLI-Factory Architecture Flow" width="450">
+  <br/>
+  <em>你的配置 + 规范 (Spec) + 测试套件 ➔ <strong>CLI-Factory 🔥</strong> ➔ Agent-Native CLI</em>
+</div>
+
 ## 🚨 问题
 
 AI agent 通过 CLI 命令与世界交互。现在已经有很多优秀的工具可以生成 CLI——把网站变成命令、为桌面应用生成 CLI 壳、包装内部工具。每周都有新的工具出现。
@@ -55,18 +67,6 @@ bb-browser site xiaoyunque/generate-video "prompt" "ref" "thread" "model" "720p"
 - 是平台挂了，还是我的输入有问题？
 
 CLI-Factory 就是为了让这些答案标准化。
-
-## 🏭 CLI-Factory 是什么
-
-**一份规范**，定义 agent-native CLI 必须提供什么——结构化 JSON 输出、任务生命周期、预算控制、错误分类、幂等性、漂移检测。
-
-**一套工具**，帮助开发者构建新的 CLI——或升级现有的 CLI——使其符合这份规范。
-
-<div align="center">
-  <img src="assets/architecture.png" alt="CLI-Factory Architecture Flow" width="600">
-  <br/>
-  <em>你的配置 + 规范 (Spec) + 测试套件 ➔ <strong>CLI-Factory 🔥</strong> ➔ Agent-Native CLI</em>
-</div>
 
 ## 🛡️ 核心保证
 

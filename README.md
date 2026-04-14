@@ -14,6 +14,18 @@
 
 ---
 
+## 🏭 What is CLI-Factory
+
+**A Spec** that defines what an agent-native CLI must provide — structured JSON output, job lifecycle, budget control, error taxonomy, idempotency, and drift detection.
+
+**A Toolkit** that helps developers build new CLIs — or upgrade existing ones — to conform to that protocol.
+
+<div align="center">
+  <img src="assets/architecture.png" alt="CLI-Factory Architecture Flow" width="450">
+  <br/>
+  <em>Your Config + Protocol Spec + Test Suite ➔ <strong>CLI-Factory 🔥</strong> ➔ Agent-Native CLI</em>
+</div>
+
 ## 🚨 The Problem
 
 AI agents interact with the world through CLI commands. There are already great tools that produce CLIs — turning websites into commands, generating harnesses for desktop apps, wrapping internal tools. More are emerging every week.
@@ -55,18 +67,6 @@ Without a shared standard, every agent integration has to rediscover the same an
 - Is the platform broken, or did my input fail?
 
 CLI-Factory exists to make those answers consistent.
-
-## 🏭 What is CLI-Factory
-
-**A Spec** that defines what an agent-native CLI must provide — structured JSON output, job lifecycle, budget control, error taxonomy, idempotency, and drift detection.
-
-**A Toolkit** that helps developers build new CLIs — or upgrade existing ones — to conform to that protocol.
-
-<div align="center">
-  <img src="assets/architecture.png" alt="CLI-Factory Architecture Flow" width="600">
-  <br/>
-  <em>Your Config + Protocol Spec + Test Suite ➔ <strong>CLI-Factory 🔥</strong> ➔ Agent-Native CLI</em>
-</div>
 
 ## 🛡️ Core Guarantees
 
