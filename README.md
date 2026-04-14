@@ -51,19 +51,18 @@ CLI-Factory exists to make those answers consistent.
 **A Toolkit** that helps developers build new CLIs — or upgrade existing ones — to conform to that protocol.
 
 ```
-  Existing CLI / Harness    Protocol Spec       Conformance Tests
-           │                     │                       │
-           └─────────────┬───────┴───────────────┬───────┘
-                         ▼                       ▼
-  ┌────────────────────────────────────────────────────────────┐
-  │ CLI-Factory                                                │
-  │                                                            │
-  │ burns 🔥🔥🔥 ad-hoc behavior into explicit agent contracts │
-  │ structured JSON • lifecycle • budget • retries            │
-  │ artifacts • typed errors • drift detection                │
-  └────────────────────────────────────┬───────────────────────┘
-                                       ▼
-                              Agent-Reliable CLI
+  Your Config         Protocol Spec         Test Suite
+       │                   │                    │
+       ▼                   ▼                    ▼
+  ┌─────────────────────────────────────────────────┐
+  │                   CLI-Factory                   │
+  │      burns 🔥 tokens in Codex / Claude Code     │
+  │                                                 │
+  │   bb-browser · CLI-Anything · extensible        │
+  └──────────────────────┬──────────────────────────┘
+                         │
+                         ▼
+                Agent-Reliable CLI
 ```
 
 ## Example JSON Contract
